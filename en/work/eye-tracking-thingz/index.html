@@ -1,0 +1,103 @@
+<!doctype html><html data-project-page lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="AI product work, design, and experiments by Bruce. Harvard GSD, RISD, Qwen, and TikTok."><meta name="theme-color" content="#ffffff"><title>Eye Tracking — BruceXie</title><meta property="og:site_name" content="BruceXie"><link rel="stylesheet" href="/styles.css"><script type="module" src="/site.js"></script></head><body id="top"><aside class="desktop-notice" role="note" aria-label="Desktop viewing required"><p class="desktop-notice-name">Bruce Xie 谢凌翔</p><h2>Please view on desktop.</h2><p>This portfolio is designed for a desktop or laptop screen.</p></aside><a class="skip" href="#main">Skip to content</a><header class="header"><a class="identity" href="/en/" style="font-size:var(--type-body) !important">Bruce Xie 谢凌翔</a><span class="header-role"></span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span>Menu</span><i aria-hidden="true"></i></button><nav id="primary-navigation" aria-label="Main navigation"><div class="nav-work"><a class="nav-link" href="/en/#work" style="font-size:var(--type-body) !important">Work</a></div><a class="nav-link" href="/en/about/"  style="font-size:var(--type-body) !important">About</a></nav></header><main id="main" class="detail experimental-case eye-case"><a class="back" href="/en/#work"><svg class="ui-icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m14 6-6 6 6 6M8 12h12"/></svg> Back to index</a><article class="eye-study">
+    <header class="research-opening eye-heading"><h1>Eye Tracking Canva</h1><h2>Gaze tracking data collection with a laptop webcam and redesign with AI</h2></header>
+    <div class="eye-landing" id="project-media">
+      <div class="eye-landing-frame">
+        <div class="eye-preview-heading"><img src="/media/eye-tracking/open-eye.png" width="512" height="512" alt=""><h3>Eye Tracking Canva</h3></div>
+        <div class="eye-preview-body">
+          <a href="https://eye-tracking-canva-bruce.brucexie13.chatgpt.site" class="eye-calibrate" target="_blank" rel="noopener noreferrer">Calibrate camera<svg class="ui-icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <div class="eye-preview-animation">
+            <video id="eye-preview-film" width="520" height="520" muted loop playsinline preload="metadata" poster="/media/eye-tracking/landing-animation.webp" src="/media/eye-tracking/landing-animation.mp4" aria-hidden="true"></video>
+            <button type="button" class="eye-preview-playback" data-eye-playback data-play="Play animation" data-pause="Pause animation" aria-label="Play animation" data-paused="true" hidden><svg class="ui-icon eye-play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7V5Z"/></svg><svg class="ui-icon eye-pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eye-brief">
+      <section class="eye-context" aria-labelledby="eye-context-title"><h2 id="eye-context-title">Context &amp; Problem</h2><p>In my design research, I use eye tracking to understand which images capture viewers’ attention and whether they engage with the accompanying captions. However, dedicated eye-tracking devices are <span style="all:unset;color:#252525 !important">expensive and time-consuming to set up</span>, making them impractical for quick reviews and limiting my ability to collect data at scale.</p>
+        <figure class="eye-device">
+          <img src="/media/eye-tracking/pupil-labs-neon.webp" width="700" height="339" loading="lazy" decoding="async" alt="Pupil Labs Neon eye-tracking glasses, front view.">
+          <figcaption>Professional devices such as the Pupil Labs Neon eye-tracker can cost as much as <a href="https://shop.openbci.com/products/pupil-labs-neon-eye-tracker" target="_blank" rel="noopener noreferrer">$7,499.00 USD</a>.</figcaption>
+        </figure>
+      </section>
+      <section class="eye-solution" aria-labelledby="eye-solution-title"><h2 id="eye-solution-title">Solution</h2><p>I built a browser-based tool that estimates users’ gaze patterns as they read PDFs on their laptops, generating a heatmap for each page during a reading session. Once sufficient data has been collected across multiple sessions, AI can analyze aggregated attention patterns, identify design issues, and provide actionable feedback.</p></section>
+    </div>
+    <section class="eye-chapter eye-process" aria-labelledby="eye-model-title">
+      <h2 id="eye-model-title">How the webcam estimates gaze</h2>
+      <ol class="eye-model"><li>
+        <div class="eye-step-art"><svg viewBox="0 0 260 148" aria-hidden="true" focusable="false"><rect x="1" y="1" width="258" height="146" rx="10" fill="#fafafa" stroke="#dedede"/><circle cx="130" cy="9" r="1.4" fill="#999"/></svg><img class="eye-supplied-icon" src="/media/eye-tracking/open-eye.png" width="512" height="512" alt=""></div>
+        <div><h3>Find the eyes</h3><p>WebGazer crops an image of each eye and records the position of the head.</p></div>
+      </li><li>
+        <div class="eye-step-art"><svg viewBox="0 0 260 148" aria-hidden="true" focusable="false"><rect x="1" y="1" width="258" height="146" rx="10" fill="#fafafa" stroke="#dedede"/><circle cx="130" cy="9" r="1.4" fill="#999"/><circle class="guide-ring" cx="130" cy="74" r="10"/><circle cx="130" cy="74" r="3.1" class="fit-target"/><circle cx="46.8" cy="28.4" r="3.1" class="fit-target"/><circle cx="130" cy="28.4" r="3.1" class="fit-target"/><circle cx="213.20000000000002" cy="28.4" r="3.1" class="fit-target"/><circle cx="46.8" cy="74" r="3.1" class="fit-target"/><circle cx="213.20000000000002" cy="74" r="3.1" class="fit-target"/><circle cx="46.8" cy="119.6" r="3.1" class="fit-target"/><circle cx="130" cy="119.6" r="3.1" class="fit-target"/><circle cx="213.20000000000002" cy="119.6" r="3.1" class="fit-target"/><circle cx="88.4" cy="50" r="3.1" class="fit-target"/><circle cx="171.6" cy="50" r="3.1" class="fit-target"/><circle cx="88.4" cy="98" r="3.1" class="fit-target"/><circle cx="171.6" cy="98" r="3.1" class="fit-target"/><circle cx="130" cy="50" r="3.1" class="fit-target"/><circle cx="130" cy="98" r="3.1" class="fit-target"/><circle cx="88.4" cy="74" r="3.1" class="fit-target"/><circle cx="171.6" cy="74" r="3.1" class="fit-target"/></svg></div>
+        <div><h3>Learn the screen</h3><p>As the reader looks at 17 targets, ridge regression learns to map those features to screen coordinates.</p></div>
+      </li><li>
+        <div class="eye-step-art"><svg viewBox="0 0 260 148" aria-hidden="true" focusable="false"><rect x="1" y="1" width="258" height="146" rx="10" fill="#fafafa" stroke="#dedede"/><circle cx="130" cy="9" r="1.4" fill="#999"/><circle cx="67.6" cy="41.6" r="4.2" class="check-target"/><circle cx="192.4" cy="42.8" r="4.2" class="check-target"/><circle cx="134.16" cy="80" r="4.2" class="check-target"/><circle cx="71.75999999999999" cy="107.60000000000001" r="4.2" class="check-target"/><circle cx="188.24" cy="106.4" r="4.2" class="check-target"/><circle class="guide-ring" cx="134.16" cy="80" r="10"/><path class="error-line" d="m137.6 77.6 28-19.6"/><circle cx="169" cy="55.5" r="4.6" class="fit-target"/></svg></div>
+        <div><h3>Check the estimate</h3><p>Five new targets test accuracy. The dotted line shows how far one prediction falls from its target.</p></div>
+      </li></ol>
+      <p class="eye-observation"></p>
+    </section>
+    <section class="eye-chapter eye-process" aria-labelledby="eye-map-title">
+      <h2 id="eye-map-title">How a heatmap is made</h2><p class="eye-lead"></p>
+      <ol class="eye-detail-flow"><li><figure>
+        <div class="eye-step-art"><svg class="eye-page-art" viewBox="0 0 240 220" aria-hidden="true" focusable="false">
+  <rect x=".5" y=".5" width="239" height="219" rx="5" fill="white" stroke="#dedede"/>
+  <path d="M20 23h64" stroke="#737373" stroke-width="5" stroke-linecap="round"/>
+  <path d="M20 35h135" stroke="#d4d4d4" stroke-width="3" stroke-linecap="round"/>
+  <g fill="none" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round">
+    <path d="M20 60h78m-78 7h82m-82 7h73m-73 7h81m-81 7h60m-60 7h80m-80 7h74"/>
+    <path d="M20 126h80m-80 7h76m-76 7h82m-82 7h72m-72 7h78m-78 7h54"/>
+    <path d="M20 183h200m-200 7h191m-191 7h174"/>
+  </g>
+</svg><img class="eye-stimulus-photo" src="/media/eye-tracking/interior-reference.png" width="100" height="110" alt=""><img class="eye-signal" src="/media/eye-tracking/layout-positions.svg" loading="lazy" width="240" height="220" alt="Gaze samples cluster over the room image at right, with a smaller cluster over the text at left."></div>
+        <figcaption><h3>Page positions</h3><p>Each dot marks one gaze estimate on the PDF.</p></figcaption>
+      </figure></li><li><figure>
+        <div class="eye-step-art"><svg class="eye-page-art" viewBox="0 0 240 220" aria-hidden="true" focusable="false">
+  <rect x=".5" y=".5" width="239" height="219" rx="5" fill="white" stroke="#dedede"/>
+  <path d="M20 23h64" stroke="#737373" stroke-width="5" stroke-linecap="round"/>
+  <path d="M20 35h135" stroke="#d4d4d4" stroke-width="3" stroke-linecap="round"/>
+  <g fill="none" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round">
+    <path d="M20 60h78m-78 7h82m-82 7h73m-73 7h81m-81 7h60m-60 7h80m-80 7h74"/>
+    <path d="M20 126h80m-80 7h76m-76 7h82m-82 7h72m-72 7h78m-78 7h54"/>
+    <path d="M20 183h200m-200 7h191m-191 7h174"/>
+  </g>
+</svg><img class="eye-stimulus-photo" src="/media/eye-tracking/interior-reference.png" width="100" height="110" alt=""><img class="eye-signal" src="/media/eye-tracking/layout-dwell.svg" loading="lazy" width="240" height="220" alt="A few grid cells mark the same positions. Darker cells hold more time."></div>
+        <figcaption><h3>Time per cell</h3><p>The tool adds viewing time to a 60 × 80 grid, skipping gaps over 750 ms.</p></figcaption>
+      </figure></li><li><figure>
+        <div class="eye-step-art"><svg class="eye-page-art" viewBox="0 0 240 220" aria-hidden="true" focusable="false">
+  <rect x=".5" y=".5" width="239" height="219" rx="5" fill="white" stroke="#dedede"/>
+  <path d="M20 23h64" stroke="#737373" stroke-width="5" stroke-linecap="round"/>
+  <path d="M20 35h135" stroke="#d4d4d4" stroke-width="3" stroke-linecap="round"/>
+  <g fill="none" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round">
+    <path d="M20 60h78m-78 7h82m-82 7h73m-73 7h81m-81 7h60m-60 7h80m-80 7h74"/>
+    <path d="M20 126h80m-80 7h76m-76 7h82m-82 7h72m-72 7h78m-78 7h54"/>
+    <path d="M20 183h200m-200 7h191m-191 7h174"/>
+  </g>
+</svg><img class="eye-stimulus-photo" src="/media/eye-tracking/interior-reference.png" width="100" height="110" alt=""><img class="eye-signal" src="/media/eye-tracking/layout-heatmap.svg" loading="lazy" width="240" height="220" alt="A warm spot sits on the image and a smaller, cooler spot sits on the text."></div>
+        <figcaption><h3>Heatmap export</h3><p>Smoothing blends nearby cells. Warmer areas show longer dwell on this page.</p></figcaption>
+      </figure></li></ol>
+      <div class="eye-heat-legend"><span>Less viewing time</span><span class="eye-heat-scale" aria-hidden="true"></span><span>More</span></div>
+    </section>
+    <section class="eye-chapter eye-process" aria-labelledby="eye-ai-title">
+      <h2 id="eye-ai-title">How AI gives suggestions</h2><p class="eye-lead"></p>
+      <ol class="eye-detail-flow eye-ai-flow"><li><figure>
+        <div class="eye-step-art"><svg viewBox="0 0 240 220" role="img" aria-label="Three aligned document sessions combine gaze samples over the same image and text regions." focusable="false"><g transform="translate(-8 -10)"><rect x="23" y="14" width="180" height="188" rx="5" fill="#f7f7f7" stroke="#dedede"/><rect x="31" y="23" width="180" height="188" rx="5" fill="#fafafa" stroke="#dedede"/><g transform="translate(10 16)"><rect x="30" y="16" width="180" height="188" rx="5" fill="white" stroke="#d6d6d6"/>
+  <path d="M44 34h54" stroke="#737373" stroke-width="4" stroke-linecap="round"/>
+  <path d="M44 44h112M44 66h55m-55 8h61m-61 8h57m-57 8h59m-59 8h50m-50 8h58m-58 8h53m-53 8h59M44 148h58m-58 8h54m-54 8h61" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+  <image href="/media/eye-tracking/interior-reference.png" x="120" y="58" width="76" height="84" preserveAspectRatio="xMidYMid slice" style="filter:grayscale(1);opacity:.8"/><path d="M44 181h140m-140 7h112" stroke="#999" stroke-width="2" stroke-linecap="round"/><circle cx="152" cy="90" r="4" fill="#252525" fill-opacity=".65"/><circle cx="160" cy="99" r="4" fill="#252525" fill-opacity=".65"/><circle cx="149" cy="108" r="4" fill="#252525" fill-opacity=".65"/><circle cx="177" cy="103" r="4" fill="#252525" fill-opacity=".65"/><circle cx="172" cy="86" r="4" fill="#252525" fill-opacity=".65"/><circle cx="66" cy="90" r="3" fill="#252525" fill-opacity=".65"/><circle cx="81" cy="110" r="3" fill="#252525" fill-opacity=".65"/></g></g></svg></div>
+        <figcaption><h3>Combine reliable sessions</h3><p>Exclude poor tracking, align the same page and task, then compare viewing time and reach by region.</p></figcaption>
+      </figure></li><li><figure>
+        <div class="eye-step-art"><svg viewBox="0 0 240 220" role="img" aria-label="The image attracts gaze while a separate caption region is outlined for review." focusable="false"><rect x="30" y="16" width="180" height="188" rx="5" fill="white" stroke="#d6d6d6"/>
+  <path d="M44 34h54" stroke="#737373" stroke-width="4" stroke-linecap="round"/>
+  <path d="M44 44h112M44 66h55m-55 8h61m-61 8h57m-57 8h59m-59 8h50m-50 8h58m-58 8h53m-53 8h59M44 148h58m-58 8h54m-54 8h61" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+  <image href="/media/eye-tracking/interior-reference.png" x="120" y="58" width="76" height="84" preserveAspectRatio="xMidYMid slice" style="filter:grayscale(1);opacity:.8"/><path d="M44 181h140m-140 7h112" stroke="#999" stroke-width="2" stroke-linecap="round"/><circle cx="152" cy="90" r="4" fill="#252525" fill-opacity=".65"/><circle cx="160" cy="99" r="4" fill="#252525" fill-opacity=".65"/><circle cx="149" cy="108" r="4" fill="#252525" fill-opacity=".65"/><circle cx="177" cy="103" r="4" fill="#252525" fill-opacity=".65"/><circle cx="172" cy="86" r="4" fill="#252525" fill-opacity=".65"/><circle cx="66" cy="90" r="3" fill="#252525" fill-opacity=".65"/><circle cx="81" cy="110" r="3" fill="#252525" fill-opacity=".65"/><rect x="36" y="172" width="158" height="24" rx="4" fill="none" stroke="#737373" stroke-dasharray="3 3"/><path d="M198 163v-8m0-4v-1" stroke="#252525" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <figcaption><h3>Identify possible issues</h3><p>Give a multimodal model the page, task and region metrics. It can flag overlooked captions or repeated revisits for review.</p></figcaption>
+      </figure></li><li><figure>
+        <div class="eye-step-art"><svg viewBox="0 0 240 220" role="img" aria-label="A proposed layout moves the caption directly below its image; an arrow indicates the change." focusable="false"><rect x="30" y="16" width="180" height="188" rx="5" fill="white" stroke="#d6d6d6"/>
+  <path d="M44 34h54" stroke="#737373" stroke-width="4" stroke-linecap="round"/>
+  <path d="M44 44h112M44 66h55m-55 8h61m-61 8h57m-57 8h59m-59 8h50m-50 8h58m-58 8h53m-53 8h59M44 148h58m-58 8h54m-54 8h61" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+  <image href="/media/eye-tracking/interior-reference.png" x="120" y="58" width="76" height="84" preserveAspectRatio="xMidYMid slice" style="filter:grayscale(1);opacity:.8"/><path d="M120 151h76m-76 7h62" stroke="#252525" stroke-width="2.5" stroke-linecap="round"/><rect x="114" y="146" width="88" height="18" rx="3" fill="none" stroke="#999"/><path d="M60 185h95q30 0 30-15m-4 4 4-4 4 4" fill="none" stroke="#737373" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <figcaption><h3>Recommend and retest</h3><p>Link each suggestion to evidence: try moving an overlooked caption beside its image, then compare attention and comprehension under the same task.</p></figcaption>
+      </figure></li></ol>
+      <p class="eye-ai-note"></p>
+      <p class="eye-ai-sources">Research: <a href="https://www.mdpi.com/2673-3951/6/4/164" target="_blank" rel="noopener noreferrer">AI scanpath analysis</a><span aria-hidden="true"> · </span><a href="https://www.nngroup.com/articles/eyetracking-tasks-efficient-scanning/" target="_blank" rel="noopener noreferrer">Reading tasks</a><span aria-hidden="true"> · </span><a href="https://developer.tobii.com/xr/learn/analytics/fundamentals/visualizations/" target="_blank" rel="noopener noreferrer">Interpreting heatmaps</a></p>
+    </section>
+  </article></main></body></html>
